@@ -1,10 +1,8 @@
 package tictactoe;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
 import javax.swing.*;
-import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
 
 public class TicTacToePanel extends JPanel {
@@ -20,7 +18,9 @@ public class TicTacToePanel extends JPanel {
 //    }
     setBorder(new LineBorder(Color.BLACK));
     addMouseListener(new TicTacToeMouseAdapter(row, col));
-  
+    JTextField textField = new JTextField("X");
+    textField.setEditable(false);
+
   }
 
 

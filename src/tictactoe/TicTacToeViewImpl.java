@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
   private JButton grid[][];
+  JPanel board;
   public TicTacToeViewImpl(String caption) {
     super(caption);
     setSize(500, 300);
@@ -23,13 +24,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
     grid = new JButton[3][3];
-    JPanel board = new JPanel(new GridLayout(3,3));
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        board.add(new TicTacToePanel(i, j));
-
-      }
-    }
+   
     add(board);
     pack();
     setVisible(true);
@@ -38,11 +33,20 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
   @Override
   public void addClickListener(TicTacToeController listener) {
 
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid[0].length; j++) {
+//    for (int i = 0; i < grid.length; i++) {
+//      for (int j = 0; j < grid[0].length; j++) {
+//        final int row = i;
+//        final int col = j;
+//        grid[i][j].addActionListener(l -> listener.handleCellClick(row, col));
+//      }
+//    }
+    board = new JPanel(new GridLayout(3,3));
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        TicTacToePanel ticTacToePanel = new TicTacToePanel(i, j);
         final int row = i;
         final int col = j;
-        grid[i][j].addActionListener(l -> listener.handleCellClick(row, col));
+        ticTacToePanel.addMouseListener(new TicTacToeMouseAdapter(row, col, listener));
       }
     }
     
