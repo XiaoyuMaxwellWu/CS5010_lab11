@@ -28,10 +28,11 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView{
 
     // the text field
     input = new JTextField(10);
+
     this.add(input);
 
     // echo button
-    echoButton = new JButton("Echo");
+    echoButton = new JButton("Echos");
     echoButton.setActionCommand("Echo Button");
     this.add(echoButton);
 
