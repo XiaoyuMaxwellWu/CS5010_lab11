@@ -14,9 +14,10 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView{
   private JButton exitButton;
   private JButton toggleButton;
   private JTextField input;
+  private JButton b[];
+
   public TicTacToeViewImpl(String caption){
     super(caption);
-
     setSize(500, 300);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,6 +46,12 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView{
     exitButton = new JButton("Exit");
     exitButton.setActionCommand("Exit Button");
     this.add(exitButton);
+
+    for (int i = 0; i < 9; i++) {
+      b[i] = new JButton();
+      this.add(b[i]);
+    }
+
 
     pack();
     setVisible(true);
