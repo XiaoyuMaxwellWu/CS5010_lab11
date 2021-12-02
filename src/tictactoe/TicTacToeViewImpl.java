@@ -1,58 +1,36 @@
 package tictactoe;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-public class TicTacToeViewImpl extends JFrame implements TicTacToeView{
-  private JLabel display;
-  private JButton echoButton;
-  private JButton exitButton;
-  private JButton toggleButton;
-  private JTextField input;
-  private JButton b[];
 
-  public TicTacToeViewImpl(String caption){
+public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
+
+  private JButton grid[][];
+  public TicTacToeViewImpl(String caption) {
     super(caption);
     setSize(500, 300);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLayout(new BorderLayout());
+    grid = new JButton[3][3];
+    JPanel board = new JPanel(new GridLayout(3,3));
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        board.add(new TicTacToePanel(i, j));
 
-    this.setLayout(new FlowLayout());
-
-    display = new JLabel("To be displayed");
-    this.add(display);
-
-    // the text field
-    input = new JTextField(10);
-
-    this.add(input);
-
-    // echo button
-    echoButton = new JButton("Echofryf");
-    echoButton.setActionCommand("Echo Button");
-    this.add(echoButton);
-
-    // toggle button
-    toggleButton = new JButton("Toggle color");
-    toggleButton.setActionCommand("Toggle color button");
-    this.add(toggleButton);
-
-    // exit button
-    exitButton = new JButton("Exit");
-    exitButton.setActionCommand("Exit Button");
-    this.add(exitButton);
-
-    for (int i = 0; i < 9; i++) {
-      b[i] = new JButton();
-      this.add(b[i]);
+      }
     }
-
-
+    add(board);
     pack();
     setVisible(true);
   }
@@ -60,6 +38,14 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView{
   @Override
   public void addClickListener(TicTacToeController listener) {
 
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        final int row = i;
+        final int col = j;
+        grid[i][j].addActionListener(l -> listener.handleCellClick(row, col));
+      }
+    }
+    
   }
 
   @Override

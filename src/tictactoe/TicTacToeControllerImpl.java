@@ -8,6 +8,7 @@ public class TicTacToeControllerImpl implements TicTacToeController{
 
   public TicTacToeControllerImpl(TicTacToeView ticTacToeView, TicTacToe ticTacToe) {
     this.ticTacToeView = ticTacToeView;
+    //ticTacToeView.addClickListener(this);
     this.ticTacToe = ticTacToe;
   }
 
@@ -102,6 +103,5 @@ public class TicTacToeControllerImpl implements TicTacToeController{
 
   @Override
   public void handleCellClick(int row, int col) {
-
   }
 }

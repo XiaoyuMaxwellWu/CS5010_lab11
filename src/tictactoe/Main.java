@@ -18,5 +18,6 @@ public class Main {
     // 3. Create an instance of the controller.
     // 4. Call playGame() on the controller.
     new TicTacToeControllerImpl(new TicTacToeViewImpl("Tictactoe"), new TicTacToeModel()).playGame();
+    
   }
 }
