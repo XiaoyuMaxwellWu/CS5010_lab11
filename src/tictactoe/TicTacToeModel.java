@@ -34,7 +34,7 @@ public class TicTacToeModel implements TicTacToe {
 
   @Override
   public Player getTurn() {
-    return null;
+    return turn;
   }
 
   @Override
