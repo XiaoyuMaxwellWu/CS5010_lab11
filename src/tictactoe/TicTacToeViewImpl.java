@@ -16,10 +16,11 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
   ReadonlyTttModel model;
   TicTacToePanel[][] panels;
   JLabel info;
+
   public TicTacToeViewImpl(ReadonlyTttModel model) {
     this.model = model;
     panels = new TicTacToePanel[3][3];
-    setSize(500,500);
+    setSize(500, 500);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
@@ -35,7 +36,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 //        grid[i][j].addActionListener(l -> listener.handleCellClick(row, col));
 //      }
 //    }
-    board = new JPanel(new GridLayout(3,3));
+    board = new JPanel(new GridLayout(3, 3));
     description = new JPanel();
     info = new JLabel();
     description.add(info);
@@ -43,8 +44,8 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
       for (int j = 0; j < 3; j++) {
         panels[i][j] = new TicTacToePanel(i, j);
         panels[i][j].addMouseListener(new TicTacToeMouseAdapter(i, j, listener, panels[i][j]));
-        board.add(panels[i][j]); 
-      } 
+        board.add(panels[i][j]);
+      }
     }
     JSplitPane sp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     sp.setResizeWeight(0.8);
@@ -61,17 +62,17 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     Player[][] board = model.getBoard();
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        if(board[i][j]==null)continue;
+        if (board[i][j] == null) continue;
         panels[i][j].setText(board[i][j].toString());
         panels[i][j].repaint();
       }
     }
-    info.setText("Next turn is "+ model.getTurn());
+    info.setText("Next turn is " + model.getTurn());
   }
 
 
   @Override
   public void makeVisible() {
-      setVisible(true);
+    setVisible(true);
   }
 }
