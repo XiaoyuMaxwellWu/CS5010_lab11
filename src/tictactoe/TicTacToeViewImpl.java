@@ -44,7 +44,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
       } 
     }
     JSplitPane sp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    sp.setResizeWeight(0.7);
+    sp.setResizeWeight(0.8);
     sp.setEnabled(false);
     sp.setDividerSize(0);
     sp.add(board);
@@ -64,6 +64,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
         panels[i][j].repaint();
       }
     }
+
   }
 
 
