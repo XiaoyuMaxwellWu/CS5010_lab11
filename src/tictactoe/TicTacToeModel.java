@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class TicTacToeModel implements TicTacToe {
   private final Player[][] board;
   private Player turn;
-
   /** Default constructor. */
   public TicTacToeModel() {
     board = new Player[3][3];
@@ -29,11 +28,13 @@ public class TicTacToeModel implements TicTacToe {
     }
     board[r][c] = turn;
     turn = turn == Player.X ? Player.O : Player.X;
+    
   }
+
 
   @Override
   public Player getTurn() {
-    return turn;
+    return null;
   }
 
   @Override

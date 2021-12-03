@@ -15,17 +15,17 @@ import javax.swing.JTextField;
 
 public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
-  private JButton grid[][];
   JPanel board;
-  public TicTacToeViewImpl(String caption) {
+  TicTacToe model;
+  TicTacToePanel[][] panels;
+  public TicTacToeViewImpl(String caption, TicTacToe model) {
     super(caption);
+    this.model = model;
+    panels = new TicTacToePanel[3][3];
     setSize(500, 300);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
-    grid = new JButton[3][3];
-   
-    add(board);
     pack();
     setVisible(true);
   }
@@ -43,18 +43,20 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     board = new JPanel(new GridLayout(3,3));
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        TicTacToePanel ticTacToePanel = new TicTacToePanel(i, j);
+        panels[i][j] = new TicTacToePanel(i, j);
         final int row = i;
         final int col = j;
-        ticTacToePanel.addMouseListener(new TicTacToeMouseAdapter(row, col, listener));
+        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(row, col, listener, panels[i][j], model));
+        board.add(panels[i][j]);
       }
     }
-    
+    add(board);
   }
 
   @Override
   public void refresh() {
-
+    Player turn = model.getTurn();
+    
   }
 
   @Override

@@ -8,7 +8,7 @@ public class TicTacToeControllerImpl implements TicTacToeController{
 
   public TicTacToeControllerImpl(TicTacToeView ticTacToeView, TicTacToe ticTacToe) {
     this.ticTacToeView = ticTacToeView;
-    //ticTacToeView.addClickListener(this);
+    ticTacToeView.addClickListener(this);
     this.ticTacToe = ticTacToe;
   }
 
@@ -24,6 +24,8 @@ public class TicTacToeControllerImpl implements TicTacToeController{
 
   @Override
   public void playGame() {
+    
+    
 //    if (!(ticTacToe instanceof TicTacToeModel)) {
 //      throw new IllegalArgumentException("Invalid model");
 //    }
@@ -103,6 +105,9 @@ public class TicTacToeControllerImpl implements TicTacToeController{
 
   @Override
   public void handleCellClick(int row, int col) {
+    ticTacToe.move(row, col);
+    Player turn = ticTacToe.getTurn();
+    ticTacToeView.refresh();
     
   }
 }
