@@ -16,9 +16,9 @@ import javax.swing.JTextField;
 public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
   JPanel board;
-  TicTacToe model;
+  ReadonlyTttModel model;
   TicTacToePanel[][] panels;
-  public TicTacToeViewImpl(String caption, TicTacToe model) {
+  public TicTacToeViewImpl(String caption, ReadonlyTttModel model) {
     super(caption);
     this.model = model;
     panels = new TicTacToePanel[3][3];
@@ -46,11 +46,12 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
         panels[i][j] = new TicTacToePanel(i, j);
         final int row = i; 
         final int col = j;
-        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(row, col, listener, panels[i][j], model));
+        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(row, col, listener, panels[i][j]));
         board.add(panels[i][j]); 
       } 
     }  
     add(board);
+    
   }
 
   @Override
@@ -58,6 +59,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     Player[][] board = model.getBoard();
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
+        if(board[i][j]==null)continue;
         panels[i][j].setText(board[i][j].toString());
         panels[i][j].repaint();
       }

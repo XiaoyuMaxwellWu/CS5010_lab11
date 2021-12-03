@@ -11,14 +11,13 @@ public class TicTacToeMouseAdapter extends MouseAdapter {
   private int col;
   private TicTacToeController controller;
   private TicTacToePanel panel;
-  private TicTacToe model;
-  public TicTacToeMouseAdapter(int row, int col, TicTacToeController controller, TicTacToePanel panel, TicTacToe model){
+  
+  public TicTacToeMouseAdapter(int row, int col, TicTacToeController controller, TicTacToePanel panel){
     
     this.row = row;
     this.col = col;
     this.controller = controller;
     this.panel = panel;
-    this.model = model;
     
   }
   @Override
