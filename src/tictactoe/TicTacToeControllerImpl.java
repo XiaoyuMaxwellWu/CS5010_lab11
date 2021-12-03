@@ -1,7 +1,5 @@
 package tictactoe;
 
-import java.io.IOException;
-
 public class TicTacToeControllerImpl implements TicTacToeController {
   private final TicTacToeView ticTacToeView;
   private final TicTacToe ticTacToe;

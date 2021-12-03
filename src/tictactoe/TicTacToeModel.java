@@ -11,7 +11,10 @@ import java.util.stream.Collectors;
 public class TicTacToeModel implements TicTacToe {
   private final Player[][] board;
   private Player turn;
-  /** Default constructor. */
+
+  /**
+   * Default constructor.
+   */
   public TicTacToeModel() {
     board = new Player[3][3];
     turn = Player.X;
@@ -28,7 +31,7 @@ public class TicTacToeModel implements TicTacToe {
     }
     board[r][c] = turn;
     turn = turn == Player.X ? Player.O : Player.X;
-    
+
   }
 
 
@@ -100,9 +103,10 @@ public class TicTacToeModel implements TicTacToe {
   public String toString() {
     // Using Java stream API to save code:
     return Arrays.stream(getBoard()).map(
-      row -> " " + Arrays.stream(row).map(
-        p -> p == null ? " " : p.toString()).collect(Collectors.joining(" | ")))
-          .collect(Collectors.joining("\n-----------\n"));
+                    row -> " " + Arrays.stream(row).map(
+                            p -> p == null ? " " : p.toString())
+                            .collect(Collectors.joining(" | ")))
+            .collect(Collectors.joining("\n-----------\n"));
     // This is the equivalent code as above, but using iteration, and still using the helpful
     // built-in String.join method.
     // List<String> rows = new ArrayList<>();

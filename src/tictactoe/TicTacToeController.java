@@ -1,15 +1,14 @@
 package tictactoe;
 
 /**
- * Represents a Controller for TicTacToe: handle user moves by executing them
- * using the model; convey move outcomes to the user in some form.
+ * Represents a Controller for TicTacToe: handle user moves by executing them using the model;
+ * convey move outcomes to the user in some form.
  */
 public interface TicTacToeController {
 
   /**
-   * Execute a single game of TicTacToe given a TicTacToe Model. When the game
-   * is over, the playGame method ends.
-   *
+   * Execute a single game of TicTacToe given a TicTacToe Model. When the game is over, the playGame
+   * method ends.
    */
   void playGame();
 

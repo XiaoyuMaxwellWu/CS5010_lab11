@@ -11,72 +11,61 @@ import javax.swing.*;
 
 public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
-  JPanel board;
-  JPanel description;
-  ReadonlyTttModel model;
-  TicTacToePanel[][] panels;
-  JLabel info;
-
+  private final ReadonlyTttModel model;
+  private final TicTacToePanel panel ;
   public TicTacToeViewImpl(ReadonlyTttModel model) {
     this.model = model;
-    panels = new TicTacToePanel[3][3];
+    this.panel = new TicTacToePanel(model);
     setSize(500, 500);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
+    this.add(panel.getSp());
   }
 
   @Override
   public void addClickListener(TicTacToeController listener) {
-
-//    for (int i = 0; i < grid.length; i++) {
-//      for (int j = 0; j < grid[0].length; j++) {
-//        final int row = i;
-//        final int col = j;
-//        grid[i][j].addActionListener(l -> listener.handleCellClick(row, col));
-//      }
-//    }
-    board = new JPanel(new GridLayout(3, 3));
-    description = new JPanel();
-    info = new JLabel();
-    description.add(info);
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        panels[i][j] = new TicTacToePanel(i, j);
-        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(i, j, listener, panels[i][j]));
-        board.add(panels[i][j]);
+        panel.getPanels()[i][j].addMouseListener(new TicTacToeMouseAdapter(i, j, listener));
       }
     }
-    JSplitPane sp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    sp.setResizeWeight(0.8);
-    sp.setEnabled(false);
-    sp.setDividerSize(0);
-    sp.add(board);
-    sp.add(description);
-    add(sp);
-    refresh();
+//    description.add(info);
+//    for (int i = 0; i < 3; i++) {
+//      for (int j = 0; j < 3; j++) {
+//        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(i, j, listener));
+//        board.add(panels[i][j]);
+//      }
+//    }
+//    JSplitPane sp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+//    sp.setResizeWeight(0.8);
+//    sp.setEnabled(false);
+//    sp.setDividerSize(0);
+//    sp.add(board);
+//    sp.add(description);
+//    add(sp);
+//    refresh();
   }
 
   @Override
   public void refresh() {
-
-
-    Player[][] board = model.getBoard();
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        if (board[i][j] == null) continue;
-        panels[i][j].setText(board[i][j].toString());
-        panels[i][j].repaint();
-      }
-    }
-    info.setText("Next turn is " + model.getTurn());
-    if(model.isGameOver()){
-      if(model.getWinner()!=null){
-        info.setText("Winner is "+model.getWinner());
-      } else {
-        info.setText("Game is draw");
-      }
-    }
+//    Player[][] board = model.getBoard();
+//    for (int i = 0; i < 3; i++) {
+//      for (int j = 0; j < 3; j++) {
+//        if (board[i][j] == null) continue;
+//        panels[i][j].setText(board[i][j].toString());
+//        panels[i][j].repaint();
+//      }
+//    }
+//    info.setText("Next turn is " + model.getTurn());
+//    if (model.isGameOver()) {
+//      if (model.getWinner() != null) {
+//        info.setText("Winner is " + model.getWinner());
+//      } else {
+//        info.setText("Game is draw");
+//      }
+//    }
+    panel.refresh();
   }
 
 

@@ -4,7 +4,7 @@ package tictactoe;
  * Represents a player in the game of tic-tac-toe.
  */
 public enum Player {
-  X("X"), O("O"); 
+  X("X"), O("O");
 
   private final String disp;
 
