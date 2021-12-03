@@ -106,7 +106,6 @@ public class TicTacToeControllerImpl implements TicTacToeController{
   @Override
   public void handleCellClick(int row, int col) {
     ticTacToe.move(row, col);
-    Player turn = ticTacToe.getTurn();
     ticTacToeView.refresh();
     
   }

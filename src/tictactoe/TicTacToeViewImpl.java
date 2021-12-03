@@ -55,7 +55,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
   @Override
   public void refresh() {
-    Player turn = model.getTurn();
+    Player[][] board = model.getBoard();
     
   }
 
