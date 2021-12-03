@@ -7,24 +7,22 @@ import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
   JPanel board;
+  JPanel description;
   ReadonlyTttModel model;
   TicTacToePanel[][] panels;
   public TicTacToeViewImpl(ReadonlyTttModel model) {
     this.model = model;
     panels = new TicTacToePanel[3][3];
-    setSize(500, 500);
+//    setSize(500,500);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
+    pack();
     setVisible(true); 
   }
 
@@ -39,16 +37,21 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 //      }
 //    }
     board = new JPanel(new GridLayout(3,3));
+    description = new JPanel();
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         panels[i][j] = new TicTacToePanel(i, j);
-        final int row = i; 
-        final int col = j;
-        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(row, col, listener, panels[i][j]));
+        panels[i][j].addMouseListener(new TicTacToeMouseAdapter(i, j, listener, panels[i][j]));
         board.add(panels[i][j]); 
       } 
-    }  
-    add(board);
+    }
+    JSplitPane sp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+    sp.setResizeWeight(0.7);
+    sp.setEnabled(false);
+    sp.setDividerSize(0);
+    sp.add(board);
+    sp.add(description);
+    add(sp);
     
   }
 
