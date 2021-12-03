@@ -56,7 +56,12 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
   @Override
   public void refresh() {
     Player[][] board = model.getBoard();
-    
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        panels[i][j].setText(board[i][j].toString());
+        panels[i][j].repaint();
+      }
+    }
   }
 
 

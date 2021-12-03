@@ -24,9 +24,6 @@ public class TicTacToeMouseAdapter extends MouseAdapter {
   @Override
   public void mouseClicked(MouseEvent e) {
     System.out.println(row + " " + col);
-    Player turn = model.getTurn();
-    panel.setText(turn.toString());
-    panel.repaint();
     controller.handleCellClick(row, col);
   }
 
