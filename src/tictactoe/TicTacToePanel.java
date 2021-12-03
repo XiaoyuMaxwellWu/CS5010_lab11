@@ -1,23 +1,46 @@
 package tictactoe;
-import java.awt.*;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.border.LineBorder;
 
+/**
+ * This is the Tic tac toe panel. raws the game board and game status. Status includes indicating
+ * whose turn it is, and if the game is over, who won.
+ */
 public class TicTacToePanel extends JPanel {
+  /**
+   * The Panels.
+   */
   private final JPanel[][] panels;
-  private final JPanel box;
-  private final JPanel description;
+  /**
+   * The Info.
+   */
   private final JLabel info;
+  /**
+   * The Model.
+   */
   private final ReadonlyTttModel model;
+  /**
+   * The Sp.
+   */
   private final JSplitPane sp;
+
+  /**
+   * Instantiates a new Tic tac toe panel.
+   *
+   * @param model the model
+   */
   public TicTacToePanel(ReadonlyTttModel model) {
     this.model = model;
-    Player[][] board = model.getBoard();
-    setLayout(new GridLayout(3, 3));
-    setBorder(new LineBorder(Color.BLACK));
-    box = new JPanel();
-    description = new JPanel();
+    JPanel box = new JPanel();
+    box.setLayout(new GridLayout(3, 3));
+    JPanel description = new JPanel();
     info = new JLabel();
     description.add(info);
     panels = new JPanel[3][3];
@@ -29,10 +52,12 @@ public class TicTacToePanel extends JPanel {
           @Override
           protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Player[][] board = model.getBoard();
             if (board[row][col] == null) return;
-            g.drawString(board[row][col].toString(), 50, 100);
+            g.drawString(board[row][col].toString(), 75, 75);
           }
         };
+        panels[i][j].setBorder(new LineBorder(Color.BLACK));
         box.add(panels[i][j]);
       }
     }
@@ -44,7 +69,11 @@ public class TicTacToePanel extends JPanel {
     sp.add(description);
     refresh();
   }
-  public void refresh(){
+
+  /**
+   * Refresh the board.
+   */
+  public void refresh() {
     Player[][] board = model.getBoard();
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
@@ -61,9 +90,21 @@ public class TicTacToePanel extends JPanel {
       }
     }
   }
-  public JSplitPane getSp(){
+
+  /**
+   * Get sp j split pane.
+   *
+   * @return the j split pane
+   */
+  public JSplitPane getSp() {
     return this.sp;
   }
+
+  /**
+   * Get panels j panel.
+   *
+   * @return the j panel
+   */
   public JPanel[][] getPanels() {
     return panels;
   }

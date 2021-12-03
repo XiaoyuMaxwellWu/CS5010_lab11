@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * The type Tic tac toe mouse adapter.
+ * This is the Tic tac toe mouse adapter that can handle mouse click.
  */
 public class TicTacToeMouseAdapter extends MouseAdapter {
 

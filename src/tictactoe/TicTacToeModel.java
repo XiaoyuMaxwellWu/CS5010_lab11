@@ -9,7 +9,13 @@ import java.util.stream.Collectors;
  * first.
  */
 public class TicTacToeModel implements TicTacToe {
+  /**
+   * The Board.
+   */
   private final Player[][] board;
+  /**
+   * The Turn.
+   */
   private Player turn;
 
   /**
@@ -93,6 +99,12 @@ public class TicTacToeModel implements TicTacToe {
     return board[r][c];
   }
 
+  /**
+   * Validate row col.
+   *
+   * @param r the r
+   * @param c the c
+   */
   private static void validateRowCol(int r, int c) {
     if (r < 0 || r > 2 || c < 0 || c > 2) {
       throw new IllegalArgumentException("Invalid board position: " + r + "," + c);

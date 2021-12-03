@@ -1,7 +1,7 @@
 package tictactoe;
 
 /**
- * The type Tic tac toe controller.
+ * This is the Tic tac toe controller that can handle cell click.
  */
 public class TicTacToeControllerImpl implements TicTacToeController {
   /**
