@@ -3,7 +3,7 @@ package tictactoe;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import sun.tools.jps.Jps;
+
 
 public class TicTacToeMouseAdapter extends MouseAdapter {
 
