@@ -59,6 +59,8 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 
   @Override
   public void refresh() {
+
+
     Player[][] board = model.getBoard();
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
@@ -68,6 +70,13 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
       }
     }
     info.setText("Next turn is " + model.getTurn());
+    if(model.isGameOver()){
+      if(model.getWinner()!=null){
+        info.setText("Winner is "+model.getWinner());
+      } else {
+        info.setText("Game is draw");
+      }
+    }
   }
 
 
