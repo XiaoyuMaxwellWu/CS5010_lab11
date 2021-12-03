@@ -29,6 +29,7 @@ public class TicTacToePanel extends JPanel {
           @Override
           protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            if (board[row][col] == null) return;
             g.drawString(board[row][col].toString(), 50, 100);
           }
         };
