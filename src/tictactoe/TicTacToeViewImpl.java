@@ -27,7 +27,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
     pack();
-    setVisible(true);
+    setVisible(true); 
   }
 
   @Override
@@ -58,6 +58,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     Player turn = model.getTurn();
     
   }
+
 
   @Override
   public void makeVisible() {
