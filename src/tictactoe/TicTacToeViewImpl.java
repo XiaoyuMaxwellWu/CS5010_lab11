@@ -37,6 +37,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 //    }
     board = new JPanel(new GridLayout(3,3));
     description = new JPanel();
+    info = new JLabel();
     description.add(info);
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
