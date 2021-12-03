@@ -18,15 +18,13 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
   JPanel board;
   ReadonlyTttModel model;
   TicTacToePanel[][] panels;
-  public TicTacToeViewImpl(String caption, ReadonlyTttModel model) {
-    super(caption);
+  public TicTacToeViewImpl(ReadonlyTttModel model) {
     this.model = model;
     panels = new TicTacToePanel[3][3];
-    setSize(500, 300);
+    setSize(500, 500);
     setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
-    pack();
     setVisible(true); 
   }
 
