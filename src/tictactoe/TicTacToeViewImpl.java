@@ -44,7 +44,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         panels[i][j] = new TicTacToePanel(i, j);
-        final int row = i;
+        final int row = i; 
         final int col = j;
         panels[i][j].addMouseListener(new TicTacToeMouseAdapter(row, col, listener, panels[i][j], model));
         board.add(panels[i][j]); 
