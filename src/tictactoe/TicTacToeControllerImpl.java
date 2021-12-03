@@ -14,11 +14,12 @@ public class TicTacToeControllerImpl implements TicTacToeController{
   @Override
   public void playGame() {
     ticTacToeView.addClickListener(this);
+    ticTacToeView.makeVisible();
   }
 
   @Override
   public void handleCellClick(int row, int col) {
-    if(ticTacToe.isGameOver())return;
+    if(ticTacToe.isGameOver() || ticTacToe.getMarkAt(row, col)!=null)return;
     ticTacToe.move(row, col);
     ticTacToeView.refresh();
   }

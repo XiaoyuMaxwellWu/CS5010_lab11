@@ -15,6 +15,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
   JPanel description;
   ReadonlyTttModel model;
   TicTacToePanel[][] panels;
+  JLabel info;
   public TicTacToeViewImpl(ReadonlyTttModel model) {
     this.model = model;
     panels = new TicTacToePanel[3][3];
@@ -36,6 +37,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
 //    }
     board = new JPanel(new GridLayout(3,3));
     description = new JPanel();
+    description.add(info);
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         panels[i][j] = new TicTacToePanel(i, j);
@@ -50,8 +52,7 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
     sp.add(board);
     sp.add(description);
     add(sp);
-    setVisible(true);
-
+    refresh();
   }
 
   @Override
@@ -64,12 +65,12 @@ public class TicTacToeViewImpl extends JFrame implements TicTacToeView {
         panels[i][j].repaint();
       }
     }
-
+    info.setText("Next turn is "+ model.getTurn());
   }
 
 
   @Override
   public void makeVisible() {
-
+      setVisible(true);
   }
 }
